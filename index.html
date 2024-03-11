@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <h1 id="counter">s&box invite codes generator v1.3 (Keys Generated so far)</h1><br>
+    <h1 id="counter">s&box invite codes generator  (Keys Generated so far)</h1><br>
     <input id="button" type="button" value="Generate New Key" onclick="startKeyGen()">
     <span id="key"> Key: </span><span id="keyOut">Click Button to Generate New Key</span>
     <p id="desc">Go to your profile on <a href="https://asset.party">https://asset.party</a> to redeem key.</p>
@@ -20,6 +20,7 @@
 </html>
 
 <script>
+    let version = "v1.4.1"
     let keyOut = document.getElementById('keyOut');
     let button = document.getElementById('button');
     let counter = document.getElementById('counter');
@@ -50,7 +51,7 @@
     };
     function updateCounter() {
         let timeSinceStart = Math.floor((Date.now() - 1710162000000)/1000);
-        counter.innerText = `s&box invite codes generator v1.3 (${Math.floor(timeSinceStart/120)+generated+100} Keys Generated so far)`;
+        counter.innerText = `s&box invite codes generator ${version} (${Math.floor(timeSinceStart/120)+generated+100} Keys Generated so far)`;
     };
     updateCounter();
     setInterval(() => {
