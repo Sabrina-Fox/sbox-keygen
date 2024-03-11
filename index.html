@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <h1>s&box invite codes generator v1.3</h1>
+    <h1 id="counter">s&box invite codes generator v1.3 (Keys Generated so far)</h1><br>
     <input id="button" type="button" value="Generate New Key" onclick="startKeyGen()">
     <span id="key"> Key: </span><span id="keyOut">Click Button to Generate New Key</span>
     <p id="desc">Go to your profile on <a href="https://asset.party">https://asset.party</a> to redeem key.</p>
@@ -22,10 +22,21 @@
 <script>
     let keyOut = document.getElementById('keyOut');
     let button = document.getElementById('button');
+    let counter = document.getElementById('counter');
+    let generated;
+    if (localStorage.getItem('generated') === null | undefined) {
+        generated = 0
+        localStorage.setItem('generated', 0);
+    } else {
+        generated = Number(localStorage.getItem('generated'))
+    };
     function tryKeyGen() {
         if (Math.random() >= 0.75) {
             keyOut.textContent = crypto.randomUUID().toUpperCase();
             button.value = 'Generate New Key'
+            generated++
+            localStorage.setItem('generated', generated);
+            updateCounter();
         } else {
             keyOut.textContent = 'Connection to server failed! please try again or refresh page.';
             button.value = 'Generate New Key'
@@ -36,7 +47,15 @@
         button.value = 'Generating...';
         let wait = 5000 + Math.floor(Math.random() * 5000);
         setTimeout(() => { tryKeyGen() }, wait)
-    }
+    };
+    function updateCounter() {
+        let timeSinceStart = Math.floor((Date.now() - 1710162000000)/1000);
+        counter.innerText = `s&box invite codes generator v1.3 (${Math.floor(timeSinceStart/120)+generated+100} Keys Generated so far)`;
+    };
+    updateCounter();
+    setInterval(() => {
+        
+    }, 60000);
 </script>
 
 <style>
@@ -44,8 +63,8 @@
     #key {margin-left: 5px;}
     body {background-color: rgb(21, 18, 26)}
     h1, p, span {font-family: "Poppins", sans-serif;}
-    h1 {color: #3273eb;}
-    p {color: #adb3cb;line-height: 30%;}
+    h1 {color: #3273eb; margin-bottom: 0;}
+    p {color: #adb3cb; line-height: 30%;}
     a {color: #569cd6;}
     span {color: #3273eb;}
     #button {width: 150px;}
