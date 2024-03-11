@@ -25,8 +25,8 @@
     let counter = document.getElementById('counter');
     let generated;
     if (localStorage.getItem('generated') === null | undefined) {
-        generated = 0
-        localStorage.setItem('generated', 0);
+        generated = 0;
+        localStorage.setItem('generated', 0)
     } else {
         generated = Number(localStorage.getItem('generated'))
     };
@@ -36,7 +36,7 @@
             button.value = 'Generate New Key'
             generated++
             localStorage.setItem('generated', generated);
-            updateCounter();
+            updateCounter()
         } else {
             keyOut.textContent = 'Connection to server failed! please try again or refresh page.';
             button.value = 'Generate New Key'
@@ -54,8 +54,11 @@
     };
     updateCounter();
     setInterval(() => {
-        
-    }, 60000);
+        if (Math.random() < 0.7) {
+            generated++;
+            localStorage.setItem('generated', generated)
+        }
+    }, 10000);
 </script>
 
 <style>
