@@ -21,7 +21,7 @@
 </html>
 
 <script>
-    let version = "v2.3.2"
+    let version = "v2.3.3"
     let keyOut = document.getElementById('keyOut');
     let button = document.getElementById('button');
     let name = document.getElementById('name');
@@ -34,25 +34,22 @@
     } else {
         generated = Number(localStorage.getItem('generated'))
     };
-    function startKeyGen() {
+    function updateCounter() {
+        let timeSinceStart = Math.floor((Date.now() - 1710162000000)/1000);
+        counter.innerText = `s&box invite codes generator ${version} (${Math.floor(timeSinceStart/180)+generated-500} Keys Generated so far)`;
+    };
+    async function startKeyGen() {
         if (!generating) {
             keyOut.textContent = 'Attempting to contact server, please wait patiently. This process can take up to 60 seconds.';
             button.value = 'Generating...';
             generating = true;
-            const response = fetch(`https://site.sabrina-rdc.com/keygen-backend${name.value}`)
-            .then(res => res.text())
-            .then((text)=>{
-                keyOut.textContent = text;
-                generated++;
-                generating = false;
-                button.value = 'Generate New Key'
-            })
-            .catch(err => console.log(err))
+            const res = await fetch(`https://site.sabrina-rdc.com/keygen-backend${name.value}`)
+            keyOut.textContent = await res.text();
+            generated++;
+            button.value = 'Generate New Key'
+            generating = false;
+            updateCounter();
         }
-    };
-    function updateCounter() {
-        let timeSinceStart = Math.floor((Date.now() - 1710162000000)/1000);
-        counter.innerText = `s&box invite codes generator ${version} (${Math.floor(timeSinceStart/120)+generated+100} Keys Generated so far)`;
     };
     updateCounter();
     setInterval(() => {
