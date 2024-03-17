@@ -10,13 +10,13 @@
 <body>
     <h1 id="counter">s&box invite codes generator  ( Keys Generated so far)</h1>
     <p id="desc">This key generator is edorsed by Mr. Garry S. Mod & PunchFace software.</p>
-    <input id="name" type="text" placeholder="Username" value="">
+    <input id="name" title="The username of the discord account you want to use the key for" type="text" placeholder="Username" value="">
     <input id="button" type="button" value="Generate New Key" onclick="startKeyGen()">
     <span id="key"> Key: </span><span id="keyOut">Click Button to Generate New Key</span>
+    <p id="desc">Enter the username of the discord account you want to use the key for.</p>
     <p id="desc">Try again or refresh the page if you encounter a server error. The keygen will most likely take multiple tries to successfully generate a valid unused key.</p>
     <br>
-    <p id="readme">READ THIS: Due to the s&box server being constantly changed and updated, this keygen may not alawys work quickly,</p>
-    <p id="readme">the keygen is updated often, but it will still take some time and patient to generated a working and unused key.</p>
+    <p id="readme">READ THIS: Due to the s&box server being constantly changed and updated, this keygen may not alawys work quickly, the keygen is updated often, but it will still take some time and patient to generated a working and unused key.</p>
     <p id="readme">DO NOT try to open multiple tabs, the s&box server will detect the spam and your ip may be blocked! Be patient and keep trying!</p>
     <br>
     <p id="desc">To redeem a key, visit your profile on <a href="https://yourls.sabrina-rdc.com/sbox-keygen-redeem">https://asset.party</a>.</p>
@@ -27,7 +27,7 @@
 </html>
 
 <script>
-    let version = "v2.4.2"
+    let version = "v2.4.3"
     let keyOut = document.getElementById('keyOut');
     let button = document.getElementById('button');
     let name = document.getElementById('name');
@@ -42,7 +42,7 @@
     };
     function updateCounter() {
         let timeSinceStart = Math.floor((Date.now() - 1710162000000)/1000);
-        counter.innerText = `s&box invite codes generator ${version} (${Math.floor(timeSinceStart/180)+generated-500} Keys Generated so far)`;
+        counter.innerText = `s&box invite codes generator ${version} (${Math.floor(timeSinceStart/180)+generated-1000} Keys Generated so far)`;
     };
     async function startKeyGen() {
         if (!generating) {
@@ -68,16 +68,14 @@
 </script>
 
 <style>
-    h1, input, #desc, p {margin-left: 15px;}
-    #key {margin-left: 5px;}
     body {background-color: rgb(21, 18, 26)}
-    h1, p, span {font-family: "Poppins", sans-serif;}
-    h1 {color: #3273eb;}
-    p {color: #adb3cb; line-height: 30%;}
+    h1, p, span, input {font-family: "Poppins", sans-serif;}
+    h1 {color: #3273eb; margin-left: 10px;}
+    p {color: #adb3cb; margin: 15px;}
     a {color: #569cd6;}
-    span {color: #3273eb;}
+    span {color: #3273eb; margin-left: 5px;}
     input#button {width: 150px;}
-    input#name {width: 80px;}
+    input#name {width: 80px; margin-left: 15px;}
     a#hidden {display: none;}
-    p#readme {color: red;}
+    p#readme {color: red; width: 75%;}
 </style>
