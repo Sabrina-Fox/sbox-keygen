@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
+
+body {
+    background-color: rgb(21, 18, 26);
+    font-family: "Poppins", sans-serif;
+    color: rgb(50, 115, 235);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+header hr {
+    width: 30%;
+    border-color: rgb(16, 55, 126);
+    border-style: dashed;
+}
+
+header .title {
+    font-size: 4em;
+}
+
+header .counter {
+    font-size: 2em;
+    font-family: "Poppins", sans-serif;
+}
+
+footer {
+
+    display: flex;
+
+    border-top: 3px solid rgb(16, 55, 126);
+    position: absolute;
+    bottom: 0;
+    height: 5%;
+    right: 0;
+    left: 0;
+    background-color: rgb(30, 25, 37);
+
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+a {
+    color: aqua;
+}
+
+main input {
+    font-size: 1em;
+}
+
+main button {
+    font-size: 1em;
+}
+
+
+main .generator {
+    font-size: 3em;
+}
+
+main .button_holder {
+
+    display: flex;
+
+    align-content: center;
+    justify-content: center;
+
+    width: 100%;
+
+    margin-bottom: 20px;
+}
+
+.key_display_container {
+    display: flex;
+
+    align-content: center;
+    justify-content: center;
+
+    text-align: center;
+
+    font-size: 0.8em;
+}
+
+.key_display {
+
+    border-radius: 10px;
+    background-color: rgb(30, 24, 37);
+
+    width: 50%;
+}
+
+main hr {
+    width: 30%;
+    border-color: rgb(16, 55, 126);
+    border-style: dashed;
+}
+
+main article {
+    font-size: 2em;
+    text-align: center;
+    margin-left: 20%;
+    margin-right: 20%;
+
+    color: rgb(36, 83, 172);
+}
+
+main article a {
+    color: rgb(7, 175, 175);
+}
