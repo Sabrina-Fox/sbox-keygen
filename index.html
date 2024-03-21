@@ -1,81 +1,62 @@
+<!--
+    Revamped by khhs - based on the original frontend by sabrinardc
+
+    Why the fuck is this a thing and why did I spend time on it?
+-->
+
 <!DOCTYPE html>
-<html>
 
-<head>
-    <title>s&box keygen</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="icon" type="image/x-icon" href="https://zipline.sabrina-rdc.com/u/4s7hn1.ico">
-</head>
+<html lang="en-GB">
 
-<body>
-    <h1 id="counter">s&box invite codes generator  ( Keys Generated so far)</h1>
-    <p id="desc">This key generator is edorsed by Mr. Garry S. Mod & PunchFace software.</p>
-    <input id="name" title="The username of the discord account you want to use the key for" type="text" placeholder="Username" value="">
-    <input id="button" type="button" value="Generate New Key" onclick="startKeyGen()">
-    <span id="key"> Key: </span><span id="keyOut">Click Button to Generate New Key</span>
-    <p id="desc">Enter the username of the discord account you want to use the key for.</p>
-    <p id="desc">Try again or refresh the page if you encounter a server error. The keygen will most likely take multiple tries to successfully generate a valid unused key.</p>
-    <br>
-    <p id="readme">READ THIS: Due to the s&box server being constantly changed and updated, this keygen may not always work quickly, the keygen is updated often, but it will still take some time and patient to generated a working and unused key. The s&box server has been updating often recently so the connection is unstable and causes errors to occur often but most of the time continue refreshing the page or trying again will fix the problem.</p>
-    <p id="readme">DO NOT try to open multiple tabs, the s&box server will detect the spam and your ip may be blocked! Be patient and keep trying!</p>
-    <br>
-    <p id="desc">To redeem a key, visit your profile on <a href="https://yourls.sabrina-rdc.com/sbox-keygen-redeem">https://asset.party</a>.</p>
-    <p>Having problems? Join the official s&box discord <a href="https://yourls.sabrina-rdc.com/sbox-discord">here</a>.</p>
-    <br>
-    <p>Keygen & website written by <a href="https://yourls.sabrina-rdc.com/discord">@sabrinardc</a></p>
-    <p><a id="hidden" href="https://yourls.sabrina-rdc.com/sbox-keygen-secret">secret</a> <a id="hidden" href="https://yourls.sabrina-rdc.com/sbox-keygen-github">github</a></p>
+    <head>
+        <title>s&box keygen</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="icon" type="image/x-icon" href="https://zipline.sabrina-rdc.com/u/4s7hn1.ico">
+        <link rel="stylesheet" href="static/main.css">
+    </head>
+
+    <body>
+        <header>
+            <div class="title">S&box Invite Codes Generator <span id="version_tag"></span></div>
+            <div class="counter">(<span id="counter"></span> key generated so far)</div>
+            <hr/>
+        </header>
+
+        <main>
+            <div class="generator" id="generator">
+                <div class="button_holder">
+                    <input id="name" placeholder="Discord username" style="margin-right: 10px;">
+                    <button id="generate_button" onclick="startKeyGen()">Generate Key</button>
+                </div>
+                <div class="key_display_container">
+                    <div id="key_display" class="key_display">Click above button to generate key!</div>
+                </div>
+            </div>
+            <hr/>
+
+            <article id="readme">
+                <p>
+                    Due to the rapid pace of S&box API updates the keygen is prone to errors. 
+                    If this happens to you, please try to refresh, as that should fix the problem.
+                </p>
+                <p>
+                    Do NOT try to open multiple tabs, the S&box server will detect spam and might block your IP!
+                </p>
+                <p>
+                    To redeem a key, visit your profile on <a href="https://asset.party/~invitecode">asset.party</a>
+                    <br>
+                    Having problems? Join the official s&box discord <a href="https://yourls.sabrina-rdc.com/sbox-discord">here</a>
+                </p>
+            </article>
+
+        </main>
+
+        <footer>
+            <b>Made by <a href="https://yourls.sabrina-rdc.com/discord">@sabrinardc</a><!-- & <a href="https://github.com/khhs167">khhs</a> --></b>
+            <br/>
+        </footer>
+    </body>
+
+    <script src="static/main.js"></script>
+
 </html>
-
-<script>
-    let version = "v3.2.0"
-    let keyOut = document.getElementById('keyOut');
-    let button = document.getElementById('button');
-    let name = document.getElementById('name');
-    let counter = document.getElementById('counter');
-    let generated;
-    let generating = false;
-    if (localStorage.getItem('generated') === null | undefined) {
-        generated = 0;
-        localStorage.setItem('generated', 0)
-    } else {
-        generated = Number(localStorage.getItem('generated'))
-    };
-    function updateCounter() {
-        let timeSinceStart = Math.floor((Date.now() - 1710162000000)/1000);
-        counter.innerText = `s&box invite codes generator ${version} (${Math.floor(timeSinceStart/180)+generated-1000} Keys Generated so far)`;
-    };
-    async function startKeyGen() {
-        if (!generating) {
-            keyOut.textContent = 'Attempting to contact server, please wait patiently. This process can take up to 60 seconds.';
-            button.value = 'Generating...';
-            generating = true;
-            const res = await fetch(`https://site.sabrina-rdc.com/keygen-backend${name.value}`)
-            keyOut.textContent = await res.text();
-            generated++;
-            button.value = 'Generate New Key'
-            generating = false;
-        }
-    };
-    updateCounter();
-    setInterval(() => {
-        if (Math.random() < 0.075) {
-            generated++;
-            localStorage.setItem('generated', generated)
-        }
-    }, 500);
-    console.log('What are you looking at? :3');
-    alert("Read the instructions before using! Do not ignore the instructions and then complain the keygen doesn't work! It takes MULTIPLE tries before you can get a working key!");
-</script>
-
-<style>
-    body {background-color: rgb(21, 18, 26)}
-    h1, p, span, input {font-family: "Poppins", sans-serif;}
-    h1 {color: #3273eb; margin-left: 10px;}
-    p {color: #adb3cb; margin: 15px;}
-    a {color: #569cd6;}
-    span {color: #3273eb; margin-left: 5px;}
-    input#button {width: 150px;}
-    input#name {width: 80px; margin-left: 15px;}
-    a#hidden {display: none;}
-    p#readme {color: red; width: 75%;}
-</style>
