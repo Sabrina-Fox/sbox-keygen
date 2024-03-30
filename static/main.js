@@ -1,4 +1,4 @@
-let version = "v3.2.0"
+let version = "v3.2.1"
 let keyOut = document.getElementById('key_display');
 let button = document.getElementById('generate_button');
 let name = document.getElementById('name');
@@ -9,6 +9,16 @@ let generating = false;
 
 versionDisplay.innerText = version;
 
+async function test(){
+    console.log(await fetchKey.send());   
+};
+
+function updateCounter() {
+    let timeSinceStart = Math.floor((Date.now() - 1710162000000)/1000);
+    counter.innerText = Math.floor(timeSinceStart/180)+generated-8000;
+};
+
+
 if (localStorage.getItem('generated') === null | undefined) {
     generated = 0;
     localStorage.setItem('generated', 0)
@@ -16,17 +26,12 @@ if (localStorage.getItem('generated') === null | undefined) {
     generated = Number(localStorage.getItem('generated'))
 };
 
-function updateCounter() {
-    let timeSinceStart = Math.floor((Date.now() - 1710162000000)/1000);
-    counter.innerText = Math.floor(timeSinceStart/180)+generated-4000;
-};
-
 async function startKeyGen() {
     if (!generating) {
         keyOut.textContent = 'Attempting to contact server, please wait patiently. This process can take up to 60 seconds.';
         button.disabled = true;
         generating = true;
-        const res = await fetch(`https://site.sabrina-rdc.com/keygen-backend${name.value}`)
+        const res = await fetch(`https://site.sabrina-rdc.com/keygen-backend${name.value}`);
         keyOut.textContent = await res.text();
         generated++;
         button.disabled = false;
