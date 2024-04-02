@@ -1,4 +1,4 @@
-let version = "v3.2.1"
+let version = "v3.3.1"
 let keyOut = document.getElementById('key_display');
 let button = document.getElementById('generate_button');
 let name = document.getElementById('name');
