@@ -110,3 +110,7 @@ main article {
 main article a {
     color: rgb(7, 175, 175);
 }
+
+#secret {
+    display: none;
+}
