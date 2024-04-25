@@ -15,7 +15,7 @@ async function test(){
 
 function updateCounter() {
     let timeSinceStart = Math.floor((Date.now() - 1710162000000)/1000);
-    counter.innerText = Math.floor(timeSinceStart/180)+generated-8000;
+    counter.innerText = Math.floor(timeSinceStart/180)+generated-20000;
 };
 
 
