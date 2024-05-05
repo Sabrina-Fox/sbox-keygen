@@ -1,4 +1,4 @@
-let version = "v3.3.1"
+let version = "v3.4.2"
 let keyOut = document.getElementById('key_display');
 let button = document.getElementById('generate_button');
 let name = document.getElementById('name');
@@ -32,7 +32,8 @@ async function startKeyGen() {
         button.disabled = true;
         generating = true;
         const res = await fetch(`https://site.sabrina-rdc.com/keygen-backend/${name.value}`);
-        keyOut.textContent = await res.text();
+        resObject = await res.json();
+        keyOut.textContent = resObject.message;
         generated++;
         button.disabled = false;
         generating = false;
