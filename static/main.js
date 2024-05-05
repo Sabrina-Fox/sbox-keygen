@@ -1,29 +1,19 @@
-let version = "v4.0.2"
+let version = "v4.1.2"
 let keyOut = document.getElementById('key_display');
 let button = document.getElementById('generate_button');
 let name = document.getElementById('name');
 let counter = document.getElementById('counter');
 let versionDisplay = document.getElementById('version_tag');
-let generated;
 let generating = false;
 
 versionDisplay.innerText = version;
 
-async function test(){
-    console.log(await fetchKey.send());   
-};
-
-function updateCounter() {
-    let timeSinceStart = Math.floor((Date.now() - 1710162000000)/1000);
-    counter.innerText = Math.floor(timeSinceStart/180)+generated-20000;
-};
-
-
 if (localStorage.getItem('generated') === null | undefined) {
     generated = 0;
-    localStorage.setItem('generated', 0)
+    localStorage.setItem('generated', 0);
+    counter.textContent = 0;
 } else {
-    generated = Number(localStorage.getItem('generated'))
+    counter.textContent = Number(localStorage.getItem('generated'))
 };
 
 async function startKeyGen() {
@@ -45,20 +35,12 @@ async function startKeyGen() {
         console.log(res)
         resObject = await res.json();
         keyOut.textContent = resObject.message;
-        generated++;
+        counter.textContent = resObject.timesTried;
+        localStorage.setItem('generated', resObject.timesTried)
         button.disabled = false;
         generating = false;
     }
 };
-
-updateCounter();
-
-setInterval(() => {
-    if (Math.random() < 0.075) {
-        generated++;
-        localStorage.setItem('generated', generated)
-    }
-}, 500);
 
 console.log('What are you looking at? :3');
 
