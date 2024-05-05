@@ -28,10 +28,21 @@ if (localStorage.getItem('generated') === null | undefined) {
 
 async function startKeyGen() {
     if (!generating) {
+        let reqObject = {
+            name: name.value,
+        }
         keyOut.textContent = 'Attempting to contact server, please wait patiently. This process can take up to 60 seconds.';
         button.disabled = true;
         generating = true;
-        const res = await fetch(`https://site.sabrina-rdc.com/keygen-backend/${name.value}`);
+        const res = await fetch(`http://127.0.0.1:8001/`, {
+            method: "POST",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(reqObject)
+        });
+        console.log(res)
         resObject = await res.json();
         keyOut.textContent = resObject.message;
         generated++;
