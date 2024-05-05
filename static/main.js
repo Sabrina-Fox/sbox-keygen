@@ -34,7 +34,7 @@ async function startKeyGen() {
         keyOut.textContent = 'Attempting to contact server, please wait patiently. This process can take up to 60 seconds.';
         button.disabled = true;
         generating = true;
-        const res = await fetch(`http://127.0.0.1:8001/`, {
+        const res = await fetch(`https://site.sabrina-rdc.com/keygen-backend/`, {
             method: "POST",
             mode: "cors",
             headers: {
