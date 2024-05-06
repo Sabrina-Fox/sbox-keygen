@@ -43,6 +43,7 @@ async function startKeyGen() {
         counter.textContent = resObject.timesTried + resObject.baseCounterNumber;
         localStorage.setItem('timesTried', resObject.timesTried);
         localStorage.setItem('baseCounterNumber', resObject.baseCounterNumber);
+        console.log(`Times Tried: ${resObject.timesTried}`);
         button.disabled = false;
         generating = false;
     }
