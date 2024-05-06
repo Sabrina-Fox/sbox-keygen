@@ -38,7 +38,6 @@ async function startKeyGen() {
             },
             body: JSON.stringify(reqObject)
         });
-        console.log(res)
         resObject = await res.json();
         keyOut.textContent = resObject.message;
         counter.textContent = resObject.timesTried + resObject.baseCounterNumber;
