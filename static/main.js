@@ -11,7 +11,7 @@ versionDisplay.innerText = version;
 async function initializeCounter(){
     baseNumberResponse = await fetch('https://site.sabrina-rdc.com/keygen-backend/baseNumber')
     counter.textContent = await baseNumberResponse.text();
-    localStorage.setItem('baseCounterNumber', baseCounterNumber.text());
+    localStorage.setItem('baseCounterNumber', baseNumberResponse.text());
     localStorage.setItem('timesTried', 0);
 };
 
