@@ -1,4 +1,4 @@
-let version = "v4.4.0"
+let version = "v4.4.1"
 let keyOut = document.getElementById('key_display');
 let button = document.getElementById('generate_button');
 let name = document.getElementById('name');
@@ -9,7 +9,8 @@ let generating = false;
 versionDisplay.innerText = version;
 
 async function initializeCounter(){
-    counter.textContent = await fetch('https://site.sabrina-rdc.com/keygen-backend/baseNumber');
+    baseNumberResponse = await fetch('https://site.sabrina-rdc.com/keygen-backend/baseNumber')
+    counter.textContent = await baseNumberResponse.text();
 };
 
 if (!localStorage.getItem('timesTried') || !localStorage.getItem('baseCounterNumber')) {
