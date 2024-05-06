@@ -50,5 +50,8 @@ async function startKeyGen() {
 };
 
 console.log('What are you looking at? :3');
+setInterval(() => {
+    console.log('What are you looking at? :3');
+}, 2500);
 
 alert("Read the instructions before using! Do not ignore the instructions and then complain the keygen doesn't work! It takes MANY tries before you can get a working key and you WILL get errors before successfully getting one!");
