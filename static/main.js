@@ -1,4 +1,4 @@
-let version = "v4.4.3"
+let version = "v4.5.0"
 let keyOut = document.getElementById('key_display');
 let button = document.getElementById('generate_button');
 let name = document.getElementById('name');
@@ -9,17 +9,17 @@ let generating = false;
 versionDisplay.innerText = version;
 
 async function initializeCounter(){
-    baseNumberResponse = await fetch('https://site.sabrina-rdc.com/keygen-backend/baseNumber')
+    baseNumberResponse = await fetch('https://site.sabrina-rdc.com/keygen-backend/baseNumber');
     baseNumber = await baseNumberResponse.text();
     counter.textContent = baseNumber;
     localStorage.setItem('baseCounterNumber', baseNumber);
     localStorage.setItem('timesTried', 0);
 };
 
-if (!localStorage.getItem('baseCounterNumber')) {
+if (!localStorage.getItem('baseCounterNumber') || !localStorage.getItem('timesTried')) {
     initializeCounter();
 } else {
-    counter.textContent = Number(localStorage.getItem('timesTried')) + Number(localStorage.getItem('baseCounterNumber'))
+    counter.textContent = Number(localStorage.getItem('timesTried')) + Number(localStorage.getItem('baseCounterNumber'));
 };
 
 async function startKeyGen() {
@@ -32,7 +32,6 @@ async function startKeyGen() {
         generating = true;
         const res = await fetch(`https://site.sabrina-rdc.com/keygen-backend/`, {
             method: "POST",
-            mode: "cors",
             headers: {
                 "Content-Type": "application/json"
             },
