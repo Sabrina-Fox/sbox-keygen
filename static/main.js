@@ -1,7 +1,7 @@
-let version = "v4.5.0"
+let version = "v4.6.0"
 let keyOut = document.getElementById('key_display');
 let button = document.getElementById('generate_button');
-let name = document.getElementById('name');
+let nameInput = document.getElementById('name');
 let counter = document.getElementById('counter');
 let versionDisplay = document.getElementById('version_tag');
 let generating = false;
@@ -16,6 +16,14 @@ async function initializeCounter(){
     localStorage.setItem('timesTried', 0);
 };
 
+nameInput.addEventListener('input', () => {
+    localStorage.setItem('nameInput', nameInput.value)
+});
+
+if (localStorage.getItem('nameInput') && localStorage.getItem('autofillName') === 'true') {
+    nameInput.value = localStorage.getItem('nameInput');
+};
+
 if (!localStorage.getItem('baseCounterNumber') || !localStorage.getItem('timesTried')) {
     initializeCounter();
 } else {
@@ -25,7 +33,7 @@ if (!localStorage.getItem('baseCounterNumber') || !localStorage.getItem('timesTr
 async function startKeyGen() {
     if (!generating) {
         let reqObject = {
-            name: name.value,
+            name: nameInput.value,
         }
         keyOut.textContent = 'Attempting to contact server, please wait patiently. This process can take up to 60 seconds.';
         button.disabled = true;
