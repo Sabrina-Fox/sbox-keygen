@@ -17,7 +17,7 @@ async function initializeCounter(){
 };
 
 nameInput.addEventListener('input', () => {
-    localStorage.setItem('nameInput', nameInput.value)
+    localStorage.setItem('nameInput', nameInput.value);
 });
 
 if (localStorage.getItem('nameInput') && localStorage.getItem('autofillName') === 'true') {
