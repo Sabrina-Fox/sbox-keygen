@@ -45,7 +45,6 @@ async function startKeyGen() {
             },
             body: JSON.stringify(reqObject)
         });
-        console.log(res.headers.get('cf-mitigated'));
         if (res.headers.get('cf-mitigated') !== 'challenge') {
             resObject = await res.json();
             keyOut.innerHTML = resObject.message;
@@ -54,11 +53,11 @@ async function startKeyGen() {
             localStorage.setItem('baseCounterNumber', resObject.baseCounterNumber);
             console.log(`Times Tried: ${resObject.timesTried}`);
             console.log('What are you looking at? :3');
+            button.disabled = false;
+            generating = false;
         } else {
             keyOut.innerHTML = 'Unknown Error! Please refresh the page and try again.'
         }
-        button.disabled = false;
-        generating = false;
     }
 };
 
