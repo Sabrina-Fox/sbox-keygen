@@ -46,9 +46,9 @@ async function startKeyGen() {
             body: JSON.stringify(reqObject)
         });
         if (res.headers.get('cf-mitigated') !== 'challenge') {
+            let resObject = await res.json();
             localStorage.setItem('timesTried', resObject.timesTried);
             localStorage.setItem('baseCounterNumber', resObject.baseCounterNumber);
-            resObject = await res.json();
             let resMessage = resObject.message;
             switch(resMessage){
                 default:
