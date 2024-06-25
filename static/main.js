@@ -46,11 +46,20 @@ async function startKeyGen() {
             body: JSON.stringify(reqObject)
         });
         if (res.headers.get('cf-mitigated') !== 'challenge') {
-            resObject = await res.json();
-            keyOut.innerHTML = resObject.message;
-            counter.textContent = resObject.timesTried + resObject.baseCounterNumber;
             localStorage.setItem('timesTried', resObject.timesTried);
             localStorage.setItem('baseCounterNumber', resObject.baseCounterNumber);
+            resObject = await res.json();
+            let resMessage = resObject.message;
+            switch(resMessage){
+                default:
+                    keyOut.innerHTML = resMessage;
+                case '3uPgvK2ZWnVr9CvXYpReorhF9ZUN9dQK':
+                    const catRes = await fetch('https://api.thecatapi.com/v1/images/search');
+                    let catJSON = catRes.json();
+                    let catImg = `<img src="${catJSON[0].url}" alt="Cat ID: ${catJSON[0].id}">`
+                    keyOut.innerHTML = catImg;
+            };
+            counter.textContent = resObject.timesTried + resObject.baseCounterNumber;
             console.log(`Times Tried: ${resObject.timesTried}`);
             console.log('What are you looking at? :3');
             button.disabled = false;
