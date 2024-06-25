@@ -51,13 +51,15 @@ async function startKeyGen() {
             localStorage.setItem('baseCounterNumber', resObject.baseCounterNumber);
             let resMessage = resObject.message;
             switch(true){
-                case(resMessage === '3uPgvK2ZWnVr9CvXYpReorhF9ZUN9dQK'):
+                case resMessage === '3uPgvK2ZWnVr9CvXYpReorhF9ZUN9dQK':
                     const catRes = await fetch('https://api.thecatapi.com/v1/images/search');
                     let catJSON = await catRes.json();
                     let catImg = `<img src="${catJSON[0].url}" alt="Cat ID: ${catJSON[0].id}">`
                     keyOut.innerHTML = catImg;
+                    break;
                 default:
                     keyOut.innerHTML = resMessage;
+                    break;
             };
             counter.textContent = resObject.timesTried + resObject.baseCounterNumber;
             console.log(`Times Tried: ${resObject.timesTried}`);
