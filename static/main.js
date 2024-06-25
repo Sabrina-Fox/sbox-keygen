@@ -54,7 +54,7 @@ async function startKeyGen() {
                 case resMessage === '3uPgvK2ZWnVr9CvXYpReorhF9ZUN9dQK':
                     const catRes = await fetch('https://api.thecatapi.com/v1/images/search');
                     let catJSON = await catRes.json();
-                    let catImg = `<img src="${catJSON[0].url}" alt="Cat ID: ${catJSON[0].id}">`
+                    let catImg = `<img src="${catJSON[0].url}" alt="Cat ID: ${catJSON[0].id}" width=80%>`
                     keyOut.innerHTML = catImg;
                     break;
                 default:
