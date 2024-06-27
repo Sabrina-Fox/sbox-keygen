@@ -1,4 +1,4 @@
-let version = "v4.7.4"
+let version = "v4.8.0"
 let keyOut = document.getElementById('key_display');
 let button = document.getElementById('generate_button');
 let nameInput = document.getElementById('name');
@@ -54,8 +54,14 @@ async function startKeyGen() {
                 case resMessage === '3uPgvK2ZWnVr9CvXYpReorhF9ZUN9dQK':
                     const catRes = await fetch('https://api.thecatapi.com/v1/images/search');
                     let catJSON = await catRes.json();
-                    let catImg = `<img src="${catJSON[0].url}" alt="Cat ID: ${catJSON[0].id}" width=80%>`
+                    let catImg = `<img src="${catJSON[0].url}" alt="Cat ID: ${catJSON[0].id}" width=70%>`
                     keyOut.innerHTML = catImg;
+                    break;
+                case resMessage === '9tSi9aEvsU2nn8qo87Lo4pgX2dyqbhq3':
+                    const dogRes = await fetch('https://dog.ceo/api/breeds/image/random');
+                    let dogJSON = await dogRes.json();
+                    let dogImg = `<img src="${dogJSON.message}" width=70%>`
+                    keyOut.innerHTML = dogImg;
                     break;
                 default:
                     keyOut.innerHTML = resMessage;
