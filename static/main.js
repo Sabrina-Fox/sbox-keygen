@@ -1,4 +1,4 @@
-let version = "v4.9.0"
+let version = "v4.9.1"
 let keyOut = document.getElementById('key_display');
 let button = document.getElementById('generate_button');
 let nameInput = document.getElementById('name');
@@ -52,7 +52,7 @@ async function startKeyGen() {
             let resMessage = resObject.message;
             switch(true){
                 case resMessage === 'JtuMcN2hyy3K898BXt4NqQ3g2iPai79q':
-                    const foxRes = await fetch('https://api.thecatapi.com/v1/images/search');
+                    const foxRes = await fetch('https://randomfox.ca/floof/');
                     let foxJSON = await foxRes.json();
                     let foxImg = `<img src="${foxJSON.image}" width=70%>`
                     keyOut.innerHTML = foxImg;
