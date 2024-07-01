@@ -1,10 +1,11 @@
-let version = "v4.9.1"
+let version = "v4.9.2"
 let keyOut = document.getElementById('key_display');
 let button = document.getElementById('generate_button');
 let nameInput = document.getElementById('name');
 let counter = document.getElementById('counter');
 let versionDisplay = document.getElementById('version_tag');
 let generating = false;
+const alertString = "Read the instructions before using! Do not ignore the instructions and then complain the keygen doesn't work! It takes MANY tries before you can get a working key and you WILL get errors before successfully getting one!";
 
 versionDisplay.innerText = version;
 
@@ -14,6 +15,7 @@ async function initializeCounter(){
     counter.textContent = baseNumber;
     localStorage.setItem('baseCounterNumber', baseNumber);
     localStorage.setItem('timesTried', 0);
+    alert(alertString);
 };
 
 nameInput.addEventListener('input', () => {
@@ -28,6 +30,7 @@ if (!localStorage.getItem('baseCounterNumber') || !localStorage.getItem('timesTr
     initializeCounter();
 } else {
     counter.textContent = Number(localStorage.getItem('timesTried')) + Number(localStorage.getItem('baseCounterNumber'));
+    alert(alertString);
 };
 
 async function startKeyGen() {
@@ -86,4 +89,3 @@ async function startKeyGen() {
 
 console.log('What are you looking at? :3');
 
-alert("Read the instructions before using! Do not ignore the instructions and then complain the keygen doesn't work! It takes MANY tries before you can get a working key and you WILL get errors before successfully getting one!");
