@@ -10,7 +10,7 @@ const alertString = "Read the instructions before using! Do not ignore the instr
 versionDisplay.innerText = version;
 
 async function initializeCounter(){
-    baseNumberResponse = await fetch('https://s8box.girlkisser.xyz/keygen-backend/baseNumber');
+    baseNumberResponse = await fetch('/keygen-backend/baseNumber');
     baseNumber = await baseNumberResponse.text();
     counter.textContent = baseNumber;
     localStorage.setItem('baseCounterNumber', baseNumber);
@@ -41,7 +41,7 @@ async function startKeyGen() {
         keyOut.textContent = 'Attempting to contact server, please wait patiently. This process can take up to 60 seconds.';
         button.disabled = true;
         generating = true;
-        const res = await fetch(`https://s8box.girlkisser.xyz/keygen-backend/`, {
+        const res = await fetch(`/keygen-backend/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
